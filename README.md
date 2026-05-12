@@ -37,7 +37,7 @@ Proje/
 │
 └── Outputs/                    # Çıktı dosyalarının tutulduğu dizin
     ├── final_model.keras       # Eğitilmiş nihai modelin serialize edilmiş hali
-    ├── patient_records.db      # SQLite tabanlı yerel klinik kayıt veritabanı (otomatik oluşturulur)
+    ├── patient_records.db      # SQLite tabanlı yerel klinik kayıt veritabanı
     ├── X_train_pseudo.npy      # Eğitime hazır, temizlenmiş pseudo-label eğitim verisi
     ├── model_karsilastirma_raporu.txt # Mimari kıyaslama performans raporu
     └── *.png                   # ROC, Hata Dağılımı ve diğer analiz grafikleri

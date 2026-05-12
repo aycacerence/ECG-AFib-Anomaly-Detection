@@ -8,6 +8,7 @@ Bu proje, yüksek frekanslı (400 Hz) Elektrokardiyogram (EKG) sinyallerinde Atr
 * **Gelişmiş Veri Ön İşleme (Pseudo-Labeling):** İstatistiksel varyans ve genlik eşikleri kullanılarak 19.000 adet etiketsiz ham EKG verisi üzerinden yarı-gözetimli (semi-supervised) pseudo-labeling süreci yürütülmüş, saf 'Normal' veri seti otonom olarak genişletilmiştir.
 * **Hafif Mimarî (Lightweight Architecture):** Giyilebilir cihaz (wearable IoT) entegrasyonuna uygun olacak şekilde, parametre maliyeti düşük ve çıkarım (inference) hızı maksimize edilmiş 1D-CAE dizaynı.
 * **Klinik Simülasyon Arayüzü:** Gerçek zamanlı EKG analizi, Z-Skoru normalizasyonu ve dinamik güven skoru (% Confidence) hesaplamaları sunan, Streamlit tabanlı profesyonel klinik gözlem paneli.
+* **SQLite Veritabanı Entegrasyonu:** Gerçekleştirilen tüm analizlerin protokol numarası, MSE skoru ve teşhis kararı ile birlikte tarih damgalı olarak kaydedildiği, geçmişe dönük sorgulanabilir klinik kayıt sistemi.
 
 ## Teknik Mimari ve Anomali Tespiti İşleyişi
 Sistem, gözetimsiz anomali tespiti (Unsupervised Anomaly Detection) prensibine dayanmaktadır. 1D-CAE modeli, yalnızca sağlıklı (Normal Sinüs Ritmi) EKG sinyalleri ile eğitilmiştir. Modelin kodlayıcı (Encoder) katmanları sağlıklı sinyallerin morfolojik özelliklerini düşük boyutlu bir gizli uzaya (Latent Space) sıkıştırırken; kod çözücü (Decoder) katmanları bu özellikleri kullanarak orijinal sinyali yeniden inşa eder.
@@ -36,6 +37,7 @@ Proje/
 │
 └── Outputs/                    # Çıktı dosyalarının tutulduğu dizin
     ├── final_model.keras       # Eğitilmiş nihai modelin serialize edilmiş hali
+    ├── patient_records.db      # SQLite tabanlı yerel klinik kayıt veritabanı (otomatik oluşturulur)
     ├── X_train_pseudo.npy      # Eğitime hazır, temizlenmiş pseudo-label eğitim verisi
     ├── model_karsilastirma_raporu.txt # Mimari kıyaslama performans raporu
     └── *.png                   # ROC, Hata Dağılımı ve diğer analiz grafikleri

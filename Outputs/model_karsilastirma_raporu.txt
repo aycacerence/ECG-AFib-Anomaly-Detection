@@ -1,0 +1,73 @@
+=================================================================
+  MODEL KARSILASTIRMA RAPORU
+  1D-CAE vs ConvLSTM Autoencoder
+=================================================================
+
+  Veri Seti: X_train_pseudo.npy (4000 sinyal, pseudo-labeled)
+  Test: 500 AFib + 500 Normal (etiketli, traindata.csv)
+  Hiperparametre: latent_dim=64, lr=0.001, batch=32
+  Max Epoch: 20, EarlyStopping patience=7
+
+=================================================================
+  SONUC TABLOSU
+=================================================================
+
+  +----------------------+-------------------+-----------------+
+  | Metrik               | 1D-CAE (Baseline) | ConvLSTM Hibrit |
+  +----------------------+-------------------+-----------------+
+  | Toplam Parametre     | 4,826,817         | 3,583,681       |
+  | Calistirilan Epoch   | 20                | 20              |
+  | Toplam Egitim Suresi | 1334.2 sn         | 3043.2 sn       |
+  | Ortalama Sn/Epoch    | 66.7 sn           | 152.2 sn        |
+  | Best Val Loss        | 0.095648          | 0.292777        |
+  | Normal MSE           | 0.071078          | 0.19006         |
+  | AFib MSE             | 0.464752          | 0.721757        |
+  | MSE Ayrim Orani      | 6.54x             | 3.8x            |
+  | ROC-AUC              | 0.9256            | 0.8777          |
+  | Optimal Esik         | 0.076888          | 0.404826        |
+  +----------------------+-------------------+-----------------+
+
+=================================================================
+  YORUM ve ANALIZ
+=================================================================
+
+  KAZANAN MODEL : 1D-CAE (Baseline)
+  ROC-AUC       : 0.9256 vs 0.8777
+
+  Parametre Farki:
+    1D-CAE (Baseline): 4,826,817 parametre
+    ConvLSTM Hibrit: 3,583,681 parametre
+    ConvLSTM 0.7x daha buyuk
+
+  Hiz Farki:
+    1D-CAE (Baseline): 66.7 sn/epoch
+    ConvLSTM Hibrit: 152.2 sn/epoch
+    ConvLSTM 2.3x daha yavas
+
+  Sonuc:
+    1D-CAE modeli, EKG sinyallerinin morfolojik ozelliklerini
+    yakalamak icin yeterlidir. LSTM'in eklenmesi parametre sayisini
+    ve egitim suresini onemli olcude artirirken, ROC-AUC uzerinde
+    anlamli bir iyilesme saglamamaktadir. Bu durum, 10 saniyelik
+    EKG sinyallerinde uzun-donemli temporal bagimliliklarin
+    sinirli etkisini gostermektedir.
+
+    'Hesaplama maliyeti / basari' orani acisindan saf 1D-CAE
+    mimarisi bu problem icin daha verimli bir secimdir.
+=================================================================
+
+  URETILEN DOSYALAR
+=================================================================
+  [Gorsel]  01_training_history.png
+  [Gorsel]  02_reconstruction_comparison.png
+  [Gorsel]  03_error_distribution.png
+  [Gorsel]  04_roc_curve.png
+  [Gorsel]  05_latent_space_pca.png
+  [Gorsel]  07_pseudo_label_summary.png
+  [Gorsel]  08_grid_search_summary.png
+  [Veri]    X_train_pseudo.npy  (64 MB)
+  [CSV]     hiperparametre_sonuclari.csv
+  [Rapor]   technical_report.txt
+  [Rapor]   pseudo_label_report.txt
+  [Rapor]   model_karsilastirma_raporu.txt  (bu dosya)
+=================================================================

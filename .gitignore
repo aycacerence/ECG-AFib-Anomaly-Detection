@@ -1,0 +1,17 @@
+# GitHub Ignore List
+
+# 1. Dev Veri Seti (2.4 GB - GitHub'a Yüklenemez)
+Dataset/
+
+# 2. Numpy Pseudo-Label Dizileri (Büyük boyutlu olabilir)
+Outputs/*.npy
+
+# 3. Kişisel Hasta Geçmişi Veritabanı
+Outputs/patient_records.db
+
+# 4. Python Önbellek Dosyaları
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Not: final_model.keras dosyası GitHub sınırının (100 MB) altında olduğu için yüklenmesine izin verilmiştir.

@@ -1,0 +1,19 @@
+============================================================
+  PSEUDO-LABELING PIPELINE RAPORU
+============================================================
+  Etiketsiz okunan     :   19,001
+  Genlik filtresi      : -      0
+  Düz-çizgi filtresi   : -      2
+  ZCR filtresi         : -      0
+  IQR enerji filtresi  : -      0
+  Filtreden geçen      :   18,999
+------------------------------------------------------------
+  TOP-K seçilen        :    3,500
+  Etiketli Normal      :      500
+  X_train TOPLAM       :    4,000
+  Ort. Pearson korel.  :   0.3721
+  Min korel. (seçilen) :   0.2049
+============================================================
+  X_train shape        : (4000, 4000, 1)
+  X_train mean/std     : 0.0000 / 1.0000
+============================================================
